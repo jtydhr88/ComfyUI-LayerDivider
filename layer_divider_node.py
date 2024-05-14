@@ -277,6 +277,9 @@ class LayerDividerLoadMaskGenerator:
     CATEGORY = "LayerDivider"
 
     def execute(self, pred_iou_thresh, stability_score_thresh, min_mask_region_area):
+        if not os.path.exists(model_dir):
+            os.makedirs(model_dir)
+
         load_seg_model(model_dir)
 
         mask_generator = get_mask_generator(pred_iou_thresh, stability_score_thresh, min_mask_region_area, model_dir)
