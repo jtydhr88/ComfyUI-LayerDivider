@@ -32,7 +32,7 @@ https://github.com/jtydhr88/ComfyUI-LayerDivider/assets/860985/3ceb0638-1ed7-4e0
 - 对于 cuDNN，必须是 v8.9.2 - CUDA 12.x (根据 https://github.com/mdboom/pytoshop/issues/9), 你可以从 https://developer.nvidia.com/rdp/cudnn-archive 下载
 - 安装并解压后，确保配置系统变量的 PATH ![Path](docs/paths.png)
 
-## I安装 - ComfyUI LayerDivider
+## 安装 - ComfyUI LayerDivider
 然后我们可以克隆并配置这个库:
 - `cd ComfyUI\custom_nodes`
 - `pip install onnxruntime-gpu --extra-index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-cuda-12/pypi/simple/`
