@@ -8,6 +8,7 @@ from .ldivider.ld_convertor import pil2cv, cv2pil, df2bgra
 from .ldivider.ld_processor import get_base, get_normal_layer, get_composite_layer, get_seg_base
 from .ldivider.ld_segment import get_mask_generator, get_masks, show_anns
 from pytoshop.enums import BlendMode
+import requests
 
 comfy_path = os.path.dirname(folder_paths.__file__)
 
