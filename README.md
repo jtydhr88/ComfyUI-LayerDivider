@@ -3,6 +3,7 @@
 
 ![image1](docs/layerdivider-color-base.png)
 ![image2](docs/layerdivider-seg-mask.png)
+https://github.com/jtydhr88/ComfyUI-LayerDivider/assets/860985/3ceb0638-1ed7-4e01-b231-03c4408c95e3
 
 ## Environment
 I only tested the following environment, it might work on other environment, but I don't test:
