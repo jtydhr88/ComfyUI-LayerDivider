@@ -1,0 +1,402 @@
+{
+  "last_node_id": 62,
+  "last_link_id": 81,
+  "nodes": [
+    {
+      "id": 58,
+      "type": "LayerDivider - Segment Mask",
+      "pos": [
+        431,
+        413
+      ],
+      "size": {
+        "0": 330,
+        "1": 98
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 76
+        },
+        {
+          "name": "mask_generator",
+          "type": "MASK_GENERATOR",
+          "link": 77
+        }
+      ],
+      "outputs": [
+        {
+          "name": "input_image",
+          "type": "LD_INPUT_IMAGE",
+          "links": [
+            75
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "df",
+          "type": "LD_DF",
+          "links": [
+            74
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "divide_mode",
+          "type": "LD_DIVIDE_MODE",
+          "links": [
+            73
+          ],
+          "shape": 3,
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LayerDivider - Segment Mask"
+      },
+      "widgets_values": [
+        20000
+      ]
+    },
+    {
+      "id": 12,
+      "type": "LoadImage",
+      "pos": [
+        -31,
+        512
+      ],
+      "size": {
+        "0": 315,
+        "1": 314
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            76
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "00010-529716395 (1).png",
+        "image"
+      ]
+    },
+    {
+      "id": 55,
+      "type": "LayerDivider - Load SAM Mask Generator",
+      "pos": [
+        -19,
+        306
+      ],
+      "size": {
+        "0": 319.20001220703125,
+        "1": 106
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "mask_generator",
+          "type": "MASK_GENERATOR",
+          "links": [
+            77
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LayerDivider - Load SAM Mask Generator"
+      },
+      "widgets_values": [
+        0.8,
+        0.8,
+        100
+      ]
+    },
+    {
+      "id": 57,
+      "type": "LayerDivider - Divide Layer",
+      "pos": [
+        916,
+        413
+      ],
+      "size": {
+        "0": 315,
+        "1": 138
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "input_image",
+          "type": "LD_INPUT_IMAGE",
+          "link": 75
+        },
+        {
+          "name": "df",
+          "type": "LD_DF",
+          "link": 74
+        },
+        {
+          "name": "divide_mode",
+          "type": "LD_DIVIDE_MODE",
+          "link": 73
+        }
+      ],
+      "outputs": [
+        {
+          "name": "base_image",
+          "type": "IMAGE",
+          "links": [
+            78
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "base",
+          "type": "IMAGE",
+          "links": [
+            79
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "bright",
+          "type": "IMAGE",
+          "links": [
+            80
+          ],
+          "shape": 3,
+          "slot_index": 2
+        },
+        {
+          "name": "shadow",
+          "type": "IMAGE",
+          "links": [
+            81
+          ],
+          "shape": 3,
+          "slot_index": 3
+        },
+        {
+          "name": "filepath",
+          "type": "STRING",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LayerDivider - Divide Layer"
+      },
+      "widgets_values": [
+        "composite"
+      ]
+    },
+    {
+      "id": 59,
+      "type": "PreviewImage",
+      "pos": [
+        1576,
+        147
+      ],
+      "size": [
+        210,
+        246
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 78
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 61,
+      "type": "PreviewImage",
+      "pos": [
+        1560,
+        504
+      ],
+      "size": [
+        210,
+        246
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 80
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 62,
+      "type": "PreviewImage",
+      "pos": [
+        1366,
+        735
+      ],
+      "size": [
+        210,
+        246
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 81
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 60,
+      "type": "PreviewImage",
+      "pos": [
+        1329,
+        418
+      ],
+      "size": [
+        210,
+        246
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 79
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    }
+  ],
+  "links": [
+    [
+      73,
+      58,
+      2,
+      57,
+      2,
+      "LD_DIVIDE_MODE"
+    ],
+    [
+      74,
+      58,
+      1,
+      57,
+      1,
+      "LD_DF"
+    ],
+    [
+      75,
+      58,
+      0,
+      57,
+      0,
+      "LD_INPUT_IMAGE"
+    ],
+    [
+      76,
+      12,
+      0,
+      58,
+      0,
+      "IMAGE"
+    ],
+    [
+      77,
+      55,
+      0,
+      58,
+      1,
+      "MASK_GENERATOR"
+    ],
+    [
+      78,
+      57,
+      0,
+      59,
+      0,
+      "IMAGE"
+    ],
+    [
+      79,
+      57,
+      1,
+      60,
+      0,
+      "IMAGE"
+    ],
+    [
+      80,
+      57,
+      2,
+      61,
+      0,
+      "IMAGE"
+    ],
+    [
+      81,
+      57,
+      3,
+      62,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}
