@@ -67,28 +67,6 @@ def to_comfy_imgs(np_imgs):
     return out_imgs
 
 
-def load_seg_model(model_dir):
-    folder = model_dir
-    file_name = 'sam_vit_h_4b8939.pth'
-    url = "https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth"
-
-    file_path = os.path.join(folder, file_name)
-    if not os.path.exists(file_path):
-        response = requests.get(url, stream=True)
-
-        total_size = int(response.headers.get('content-length', 0))
-        with open(file_path, 'wb') as f, tqdm(
-                desc=file_name,
-                total=total_size,
-                unit='iB',
-                unit_scale=True,
-                unit_divisor=1024,
-        ) as bar:
-            for data in response.iter_content(chunk_size=1024):
-                size = f.write(data)
-                bar.update(size)
-
-
 def generate_layers(input_image, cv_image, df, layer_mode, divide_mode):
     base_image = to_comfy_img(df2bgra(df))
     comfy_image = to_comfy_img(cv_image)
@@ -136,29 +114,6 @@ def generate_layers(input_image, cv_image, df, layer_mode, divide_mode):
                 to_comfy_imgs(shadow_layer_list), filename)
     else:
         return None
-
-
-class LayerDividerLoadImagePath:
-    def __init__(self):
-        pass
-
-    @classmethod
-    def INPUT_TYPES(s):
-        input_dir = folder_paths.get_input_directory()
-        files = [f for f in os.listdir(input_dir) if os.path.isfile(os.path.join(input_dir, f))]
-        return {"required":
-                    {"image": (sorted(files), {"image_upload": True})},
-                }
-
-    CATEGORY = "LayerDivider"
-
-    RETURN_TYPES = ("IMAGE_PATH",)
-    FUNCTION = "load_image"
-
-    def load_image(self, image):
-        image_path = folder_paths.get_annotated_filepath(image)
-
-        return (image_path,)
 
 
 class LayerDividerColorBase:

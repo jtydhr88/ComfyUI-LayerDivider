@@ -6,3 +6,4 @@ psd-tools
 onnx
 segment_anything
 requests
+tqdm==4.63.0
