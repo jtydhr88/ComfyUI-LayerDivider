@@ -1,0 +1,7 @@
+opencv-python
+pandas
+scikit-learn
+scikit-image
+psd-tools
+onnx
+segment_anything
