@@ -1,3 +1,4 @@
+[EN](README.md) | [中文](README_ZH_CN.md)
 # ComfyUI LayerDivider
 **ComfyUI LayerDivider** is custom nodes that generating layered psd files inside ComfyUI, original implement is [mattyamonaca/layerdivider](https://github.com/mattyamonaca/layerdivider)
 
@@ -27,7 +28,7 @@ Then you can run `python -s ComfyUI\main.py --windows-standalone-build` to check
 Next, this repo also requires specific versions of CUDA and cuDNN to be installed locally:
 - For CUDA, I only install and test CUDA 12.1, you can find it from https://developer.nvidia.com/cuda-12-1-0-download-archive
 - For cuDNN, it MUST be v8.9.2 - CUDA 12.x (according to https://github.com/mdboom/pytoshop/issues/9), you can find it from https://developer.nvidia.com/rdp/cudnn-archive
-- After install and unzip, make sure you configure the PATH of your system variable
+- After install and unzip, make sure you configure the PATH of your system variable ![Path](docs/paths.png)
 
 ## Installation - ComfyUI LayerDivider
 Then we can clone and configure this repo for ComfyUI:
