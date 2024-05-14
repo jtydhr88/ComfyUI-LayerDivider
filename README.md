@@ -1,5 +1,8 @@
 # ComfyUI LayerDivider
-**ComfyUI LayerDivider** is custom nodes that generating layered psd files inside ComfyUI, original implement is 
+**ComfyUI LayerDivider** is custom nodes that generating layered psd files inside ComfyUI, original implement is [mattyamonaca/layerdivider](https://github.com/mattyamonaca/layerdivider)
+
+![image1](docs/layerdivider-color-base.png)
+![image2](docs/layerdivider-seg-mask.png)
 
 ## Environment
 I only tested the following environment, it might work on other environment, but I don't test:
@@ -39,12 +42,76 @@ Then we can clone and configure this repo for ComfyUI:
 Congratulation! You complete all installation!
 
 ## Node Introduction
-Currently, this extension includes two modes with three custom nodes, plus two layer modes(normal and composite) for each mode:
+Currently, this extension includes two modes with four custom nodes, plus two layer modes(normal and composite) for each mode:
 
 ### Mode
-- Color Base
-- Segment Mask
+There are two main layered segmentation modes:
+- Color Base - Layers based on similar colors, with parameters:
+  - loops 
+  - init_cluster 
+  - ciede_threshold 
+  - blur_size
+- Segment Mask - First, the image is divided into segments using [SAM - segment anything](https://segment-anything.com/) to generate corresponding masks, then layers are created based on these masks.
+  - Load SAM Mask Generator, with parameters (These come from segment anything, please refer to [here](https://github.com/facebookresearch/segment-anything/blob/6fdee8f2727f4506cfbbe553e23b895e27956588/segment_anything/automatic_mask_generator.py#L61) for more details):
+    - pred_iou_thresh 
+    - stability_score_thresh 
+    - min_mask_region_area
+  - LayerDivider - Segment Mask, with parameters:
+    - area_th: determines the number of partitions. The smaller the value, the more partitions there will be; the larger the value, the fewer partitions there will be.
 
 ### Layer Mode
-- normal
-- composite
+Using in Divide Layer node to decide the layer mode:
+- normal - Generates three layers for each region:
+  - base - The base layer is the starting point for image processing
+  - bright - The bright layer focuses on the brightest parts of the image, enhancing the brightness and gloss of these areas
+  - shadow - The shadow layer deals with the darker parts of the image, emphasizing the details of shadows and dark areas.
+- composite - Generates five layers for each region:
+  - base - The base layer is the starting point of the image
+  - screen - The screen layer simulates the effect of light overlay. It multiplies the color values of the image with the color values of the layer above it and then inverts the result, producing a brighter effect than the original image
+  - multiply - The multiply layer simulates the effect of multiple images being overlaid. It directly multiplies the color values of the image with the color values of the layer above it, resulting in a darker effect than the original image.
+  - subtract - The subtract layer subtracts the color values of the layer above from the base image, resulting in an image with lower color values.
+  - addition - The addition layer adds the color values of the layer above to the base image, resulting in an image with higher color values.
+
+## Example workflows
+Here are two workflows for reference:
+- [layerdivider-color-base.json](workflows/layerdivider-color-base.json) ![color-base](docs/layerdivider-color-base.png)
+- [layerdivider-seg-mask.json](workflows/layerdivider-seg-mask-workflow.json) ![color-base](docs/layerdivider-seg-mask.png)
+
+## Example outputs
+- [output_color_base_composite.psd](docs/output_color_base_composite.psd)
+- [output_color_base_normal.psd](docs/output_color_base_normal.psd)
+- [output_seg_mask_composite.psd](docs/output_seg_mask_composite.psd)
+- [output_seg_mask_normal.psd](docs/output_seg_mask_normal.psd)
+
+## Known issues
+Sometimes, composite mode will fail on some images, such as ComfyUI example image, still under invesgating the cause
+
+
+## Python 3.11? ComfyUI's Built-in Python?
+As mentioned above, some dependency packages in the original library are only available in Python 3.10, not in Python 3.11. At this stage, a new runtime environment must be created independently of the Python that comes with ComfyUI. 
+
+However, it is possible that support for Python 3.11 may be found in the future.
+
+## ComfyUI Manager?
+I understand that many non-technical users rely on ComfyUI Manager for plugin installation and management. However, as mentioned in the installation instructions above, this plugin requires some local configuration, Python version, and the order of dependency installation. 
+
+Based on these considerations, it will not be registered on ComfyUI Manager, at least at this point in time.
+
+## Credit & Thanks
+- [mattyamonaca/layerdivider](https://github.com/mattyamonaca/layerdivider) - Original implement
+- [ComfyUI](https://github.com/comfyanonymous/ComfyUI) - A powerful and modular stable diffusion GUI.
+
+## My extensions for ComfyUI
+- [ComfyUI-LayerDivider](https://github.com/jtydhr88/ComfyUI-LayerDivider) - ComfyUI InstantMesh is custom nodes that generating layered psd files inside ComfyUI
+- [ComfyUI-InstantMesh](https://github.com/jtydhr88/ComfyUI-InstantMesh) - ComfyUI InstantMesh is custom nodes that running InstantMesh into ComfyUI
+- [ComfyUI-ImageMagick](https://github.com/jtydhr88/ComfyUI-ImageMagick) - This extension implements custom nodes that integreated ImageMagick into ComfyUI
+- [ComfyUI-Workflow-Encrypt](https://github.com/jtydhr88/ComfyUI-Workflow-Encrypt) - Encrypt your comfyui workflow with key
+
+## My extensions for stable diffusion webui
+- [3D Model/pose loader](https://github.com/jtydhr88/sd-3dmodel-loader) A custom extension for AUTOMATIC1111/stable-diffusion-webui that allows you to load your local 3D model/animation inside webui, or edit pose as well, then send screenshot to txt2img or img2img as your ControlNet's reference image.
+- [Canvas Editor](https://github.com/jtydhr88/sd-canvas-editor) A custom extension for AUTOMATIC1111/stable-diffusion-webui that integrated a full capability canvas editor which you can use layer, text, image, elements and so on, then send to ControlNet, basing on Polotno.
+- [StableStudio Adapter](https://github.com/jtydhr88/sd-webui-StableStudio) A custom extension for AUTOMATIC1111/stable-diffusion-webui to extend rest APIs to do some local operations, using in StableStudio.
+- [Txt/Img to 3D Model](https://github.com/jtydhr88/sd-webui-txt-img-to-3d-model) A custom extension for sd-webui that allow you to generate 3D model from txt or image, basing on OpenAI Shap-E.
+- [3D Editor](https://github.com/jtydhr88/sd-webui-3d-editor) A custom extension for sd-webui that with 3D modeling features (add/edit basic elements, load your custom model, modify scene and so on), then send screenshot to txt2img or img2img as your ControlNet's reference image, basing on ThreeJS editor.
+
+
