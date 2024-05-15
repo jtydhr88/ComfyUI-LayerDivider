@@ -43,7 +43,7 @@ def show_anns(image, masks, output_dir):
 
     if not os.path.exists(f'{output_dir}/tmp/seg_layer/'):
         os.makedirs(f'{output_dir}/tmp/seg_layer/')
-        
+
     with open(f'{output_dir}/tmp/seg_layer/sorted_masks.pkl', 'wb') as f:
         pickle.dump(sorted_masks, f)
     polygons = []

@@ -30,6 +30,11 @@ Next, this repo also requires specific versions of CUDA and cuDNN to be installe
 - For cuDNN, it MUST be v8.9.2 - CUDA 12.x (according to https://github.com/mdboom/pytoshop/issues/9), you can find it from https://developer.nvidia.com/rdp/cudnn-archive
 - After install and unzip, make sure you configure the PATH of your system variable ![Path](docs/paths.png)
 
+## Installation - Visual Studio Build Tools
+It might also require Visual Studio Build Tools.
+However, I am not sure because my local already installed previously. 
+If it needs, you can find from [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads/?q=build+tools).
+
 ## Installation - ComfyUI LayerDivider
 Then we can clone and configure this repo for ComfyUI:
 - `cd ComfyUI\custom_nodes`
