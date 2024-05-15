@@ -32,6 +32,11 @@ https://github.com/jtydhr88/ComfyUI-LayerDivider/assets/860985/3ceb0638-1ed7-4e0
 - 对于 cuDNN，必须是 v8.9.2 - CUDA 12.x (根据 https://github.com/mdboom/pytoshop/issues/9), 你可以从 https://developer.nvidia.com/rdp/cudnn-archive 下载
 - 安装并解压后，确保配置系统变量的 PATH ![Path](docs/paths.png)
 
+## 安装  - Visual Studio Build Tools
+可能还需要安装 Visual Studio Build Tools。
+不过，我不确定因为我本地之前已经安装过了。 
+如果需要，你可以从以下网址找到： [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads/?q=build+tools).
+
 ## 安装 - ComfyUI LayerDivider
 然后我们可以克隆并配置这个库:
 - `cd ComfyUI\custom_nodes`
