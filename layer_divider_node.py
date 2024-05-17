@@ -20,7 +20,7 @@ model_dir = f"{layer_divider_path}/segment_model"
 
 if not os.path.exists(f'{output_dir}'):
     os.makedirs(f'{output_dir}')
-    
+
 import uuid
 
 import cv2
