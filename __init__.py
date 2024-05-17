@@ -40,7 +40,7 @@ def run_script(cmd, cwd='.'):
     return process.wait()
 
 try:
-    from .layer_divider_node import NODE_CLASS_MAPPINGS
+    from .layer_divider_node import NODE_CLASS_MAPPINGS,NODE_DISPLAY_NAME_MAPPINGS
 except:
     my_path = os.path.dirname(__file__)
     requirements_path = os.path.join(my_path, "requirements.txt")
@@ -50,13 +50,13 @@ except:
     run_script([sys.executable, '-s', '-m', 'pip', 'install', '-r', requirements_path])
 
     try:
-        from .layer_divider_node import NODE_CLASS_MAPPINGS
+        from .layer_divider_node import NODE_CLASS_MAPPINGS,NODE_DISPLAY_NAME_MAPPINGS
     except:
         print(f"## [ERROR] LayerDivider: Attempting to reinstall dependencies using an alternative method.")
         run_script([sys.executable, '-s', '-m', 'pip', 'install', '--user', '-r', requirements_path])
 
         try:
-            from .nodes import NODE_CLASS_MAPPINGS
+            from .layer_divider_node import NODE_CLASS_MAPPINGS,NODE_DISPLAY_NAME_MAPPINGS
         except:
             print(f"## [ERROR] LayerDivider: Failed to install package in the correct Python environment.")
             traceback.print_exc()
