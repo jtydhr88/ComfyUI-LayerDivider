@@ -265,8 +265,8 @@ class LayerDividerSegmentMask:
             }
         }
 
-    RETURN_TYPES = ("LD_INPUT_IMAGE", "LD_DF", "LD_DIVIDE_MODE")
-    RETURN_NAMES = ("input_image", "df", "divide_mode")
+    RETURN_TYPES = ("LD_INPUT_IMAGE", "LD_DF", "LD_DIVIDE_MODE", "IMAGE")
+    RETURN_NAMES = ("input_image", "df", "divide_mode", "masks_preview")
 
     FUNCTION = "execute"
 
@@ -281,7 +281,9 @@ class LayerDividerSegmentMask:
 
         masks = get_masks(pil2cv(input_image), mask_generator)
 
-        show_anns(input_image, masks, output_dir)
+        masked_image = show_anns(input_image, masks, output_dir)
+
+        masked_image = to_comfy_imgs(masked_image)
 
         input_image.putalpha(255)
 
@@ -295,7 +297,7 @@ class LayerDividerSegmentMask:
 
         df = get_seg_base(self.input_image, masks, area_th)
 
-        return self.input_image, df, "seg_mask"
+        return self.input_image, df, "seg_mask", masked_image
 
 
 class LayerDividerDivideLayer:

@@ -60,12 +60,11 @@ def show_anns(image, masks, output_dir):
 
         mask_list.append(img)
 
-    return mask_list
-    #base_mask = image
-    #for mask in mask_list:
-    #    base_mask = Image.alpha_composite(base_mask, Image.fromarray(mask))
+    base_mask = image
+    for mask in mask_list:
+        base_mask = Image.alpha_composite(base_mask, Image.fromarray(mask))
 
-    #return base_mask
+    return base_mask
 
 def show_masks(image_np, masks: np.ndarray, alpha=0.5):
     image = copy.deepcopy(image_np)
