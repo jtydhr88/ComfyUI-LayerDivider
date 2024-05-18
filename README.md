@@ -33,13 +33,14 @@ If it needs, you can find from [Visual Studio Build Tools](https://visualstudio.
 
 ## (Method 1) Installation - ComfyUI Embedded Plugin & ComfyUI Manager 
 1. You could clone this repo inside **comfyUI/custom_notes** directly `git clone https://github.com/jtydhr88/ComfyUI-LayerDivider.git`
-2. or use ComfyUI Manager   ![manager](docs/comfyui-manager.png)
-3. However, no matter which way you choose, it will fail at first time   ![error](docs/error.png)
+2. or use ComfyUI Manager ![manager](docs/comfyui-manager.png)
+3. However, no matter which way you choose, it will fail at first time ![error](docs/error.png)
 4. Stop ComfyUI
 5. Then go to **custom_nodes\ComfyUI-LayerDivider**, and run **install_windows_portable_win_py311_cu121.bat**
 
-If you prefer to use conda and python 3.10, you could follow the next:
+Done!
 
+(If you prefer to use conda and python 3.10, you could follow the next)
 ## (Method 2) Installation - ComfyUI
 You could use conda to manage and create the ComfyUI runtime environment:
 - use cmd/terminal to enter the comfyui root folder (which includes run_cpu.bat and run_nvidia_gpu.bat) 

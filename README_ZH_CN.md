@@ -8,13 +8,41 @@ https://github.com/jtydhr88/ComfyUI-LayerDivider/assets/860985/3ceb0638-1ed7-4e0
 
 ## 环境
 我只测试了以下环境，可能在其他环境下也能工作，但我没有测试:
-1. Windows 10
-2. conda
-3. Python 3.10
-4. GTX 3090
-5. Cuda 12.1
 
-## 安装 - ComfyUI
+### 通用
+1. Windows 10
+2. GTX 3090
+3. Cuda 12.1
+
+### 环境 1 - 参见方法1
+1. ComfyUI embedded python (python 3.11) and ComfyUI Manager
+
+### 环境 2 - 参见方法2
+1. conda
+2. Python 3.10
+
+## （通用）安装 - CUDA & cuDNN
+这个库需要本地安装特定版本的 CUDA 和 cuDNN:
+- 对于 CUDA，我只安装和测试了 CUDA 12.1，你可以从 https://developer.nvidia.com/cuda-12-1-0-download-archive 下载。
+- 对于 cuDNN，必须是 v8.9.2 - CUDA 12.x (根据 https://github.com/mdboom/pytoshop/issues/9), 你可以从 https://developer.nvidia.com/rdp/cudnn-archive 下载
+- 安装并解压后，确保配置系统变量的 PATH ![Path](docs/paths.png)
+
+## （通用）安装  - Visual Studio Build Tools
+可能还需要安装 Visual Studio Build Tools。
+不过，我不确定因为我本地之前已经安装过了。 
+如果需要，你可以从以下网址找到： [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads/?q=build+tools).
+
+## (方法1) 安装 - ComfyUI Embedded Plugin & ComfyUI Manager 
+1. 你可以直接在**comfyUI/custom_notes** 克隆本库 `git clone https://github.com/jtydhr88/ComfyUI-LayerDivider.git`
+2. 或是使用 ComfyUI Manager ![manager](docs/comfyui-manager.png)
+3. 但是，无论是使用那种方式，第一次运行的时候都会失败 ![error](docs/error.png)
+4. 停止 ComfyUI
+5. 然后进到 **custom_nodes\ComfyUI-LayerDivider**中，运行**install_windows_portable_win_py311_cu121.bat**
+
+完成！
+
+（如果你倾向使用conda或是python 3.10，参见下面）
+## （方法2）安装 - ComfyUI
 首先，这个插件依赖于 Python 3.10，这意味着我们不能使用 ComfyUI 自带的 Python，因为它是 Python 3.11。
 
 由于这个原因，推荐使用 conda 管理和创建 ComfyUI 的运行环境：
@@ -26,18 +54,7 @@ https://github.com/jtydhr88/ComfyUI-LayerDivider/assets/860985/3ceb0638-1ed7-4e0
 
 然后你可以运行 `python -s ComfyUI\main.py --windows-standalone-build` 来检查 ComfyUI 是否正常运行。
 
-## 安装 - CUDA & cuDNN
-接下来，这个库还需要本地安装特定版本的 CUDA 和 cuDNN:
-- 对于 CUDA，我只安装和测试了 CUDA 12.1，你可以从 https://developer.nvidia.com/cuda-12-1-0-download-archive 下载。
-- 对于 cuDNN，必须是 v8.9.2 - CUDA 12.x (根据 https://github.com/mdboom/pytoshop/issues/9), 你可以从 https://developer.nvidia.com/rdp/cudnn-archive 下载
-- 安装并解压后，确保配置系统变量的 PATH ![Path](docs/paths.png)
-
-## 安装  - Visual Studio Build Tools
-可能还需要安装 Visual Studio Build Tools。
-不过，我不确定因为我本地之前已经安装过了。 
-如果需要，你可以从以下网址找到： [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads/?q=build+tools).
-
-## 安装 - ComfyUI LayerDivider
+## （方法2）安装 - ComfyUI LayerDivider
 然后我们可以克隆并配置这个库:
 - `cd ComfyUI\custom_nodes`
 - `pip install onnxruntime-gpu --extra-index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-cuda-12/pypi/simple/`
