@@ -1,7 +1,6 @@
-opencv-python
-pandas
-scikit-learn
 scikit-image
-psd-tools
-onnx
+scikit-learn
+pandas
+opencv-python
 segment_anything
+onnx
