@@ -61,8 +61,11 @@ def show_anns(image, masks, output_dir):
         mask_list.append(img)
 
     base_mask = image
-    #for mask in mask_list:
-    #    base_mask = Image.alpha_composite(base_mask, Image.fromarray(mask))
+    for mask in mask_list:
+        img1 = base_mask.convert('RGBA')
+        img2 = Image.fromarray(mask)
+
+        base_mask = Image.alpha_composite(img1, img2)
 
     return base_mask
 

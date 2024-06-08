@@ -283,7 +283,7 @@ class LayerDividerSegmentMask:
 
         masked_image = show_anns(input_image, masks, output_dir)
 
-        #masked_image = to_comfy_imgs(masked_image)
+        masked_image = to_comfy_img(np.array(masked_image))
 
         input_image.putalpha(255)
 
