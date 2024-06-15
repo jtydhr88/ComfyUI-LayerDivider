@@ -1,0 +1,15 @@
+[project]
+name = "comfyui-layerdivider"
+description = "ComfyUI LayerDivider is custom nodes that generating layered psd files inside ComfyUI[w/Please follow readme and run install_windows_portable_win_py311_cu121 for ComfyUI embedded python.]"
+version = "1.0.0"
+license = "LICENSE"
+dependencies = ["scikit-image", "scikit-learn", "pandas", "opencv-python", "segment_anything", "onnx"]
+
+[project.urls]
+Repository = "https://github.com/jtydhr88/ComfyUI-LayerDivider"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "ComfyUI-LayerDivider"
+Icon = ""
