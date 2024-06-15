@@ -18,7 +18,11 @@ I tested the following environment, it might work on other environment, but I do
 
 ### Env 2 - see Method 2
 1. conda
-2. Python 3.10
+2. Python 3.19
+
+### Env 3 - see Method 3
+1. conda
+2. Python 3.11
 
 ## (Common) Installation - CUDA & cuDNN
 This repo requires specific versions of CUDA and cuDNN to be installed locally:
@@ -63,6 +67,14 @@ Then we can clone and configure this repo for ComfyUI:
 - `pip install -r requirements.txt`
 
 Congratulation! You complete all installation!
+
+## (Method 3) Installation - ComfyUI LayerDivider
+Assume you already have a conda python3.11 env
+- activate your env
+- go into this folder and run install_conda_win_py311_cu121.bat
+
+Congratulation! You complete all installation!
+
 
 ## Node Introduction
 Currently, this extension includes two modes with four custom nodes, plus two layer modes(normal and composite) for each mode:
