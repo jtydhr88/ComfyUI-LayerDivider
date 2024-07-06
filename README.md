@@ -9,7 +9,7 @@ https://github.com/jtydhr88/ComfyUI-LayerDivider/assets/860985/3ceb0638-1ed7-4e0
 ## Environment
 I tested the following environment, it might work on other environment, but I don't test:
 ### Common
-1. Windows 10
+1. Windows 10/Ubuntu
 2. GTX 3090
 3. Cuda 12.1
 
@@ -18,11 +18,16 @@ I tested the following environment, it might work on other environment, but I do
 
 ### Env 2 - see Method 2
 1. conda
-2. Python 3.19
+2. Python 3.11
 
 ### Env 3 - see Method 3
 1. conda
 2. Python 3.11
+
+### Env 4 - see Method 4
+1. Ubuntu
+2. conda/Python 3.11
+3. cuda 12.1
 
 ## (Common) Installation - CUDA & cuDNN
 This repo requires specific versions of CUDA and cuDNN to be installed locally:
@@ -72,6 +77,20 @@ Congratulation! You complete all installation!
 Assume you already have a conda python3.11 env
 - activate your env
 - go into this folder and run install_conda_win_py311_cu121.bat
+
+Congratulation! You complete all installation!
+
+## (Method 4) Ubuntu Installation - ComfyUI LayerDivider
+Assume you already have a python3.11 env + cuda 12.1
+- clone this repo inside custom_nodes folder
+- cd ComfyUI-LayerDivider/
+- pip install -r requirements.txt
+
+Then make sure run them one by one:
+- pip install cython
+- pip install pytoshop -I --no-cache-dir
+- pip install psd_tools
+- pip install onnxruntime-gpu==1.17.0 --extra-index-url https://aiinfra.pkgs.visualstudio.com/PublicPackages/_packaging/onnxruntime-cuda-12/pypi/simple/
 
 Congratulation! You complete all installation!
 
